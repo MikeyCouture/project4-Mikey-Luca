@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Granite + Creosote</title>
+    <title>Granite + Creosote Run App</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- //start of main modular window// -->
+    <section class="mainPage">
+
+        <!-- //header// -->
+        <header>
+            <h1>Running App</h1>
+            <!-- //use JS to put name of searched location here?// -->
+            <h2 id="locationHeading"></h2>
+        </header>
+
+        <!-- //form that appears on splash page and also header// -->
+        <form action="" class="searchForm">
+            <label class="visuallyhidden" for="location">Enter a location</label>
+            <input type="search" class="searchBar" name="location" placeholder="Where are you running?" class="autocomplete" id="location">
+            <button type="submit" id="submitButton" class="searchButton"><i aria-hidden class="fas fa-search-location"></i><span
+                    class="visuallyhidden"></button>
+        </form>
+
+        <!-- //content where we put the info pulled from the form query// -->
+        <section class="returnedContent">
+            <div class="weather">
+
+            </div>
+            <div class="summary">
+
+            </div>
+
+        </section>
+
+        
+
+    </section>
     
+    <script src="script.js"></script>
 </body>
 </html>
