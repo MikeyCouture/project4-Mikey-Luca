@@ -27,24 +27,24 @@
         <!-- //form that appears on splash page and also header// -->
         <form action="submit" class="searchForm">
             <label class="visuallyhidden" for="location">Enter a location</label>
-            <input type="search" class="searchBar" name="location" placeholder="Where are you running?" id="location">
-            <button type="submit" id="submitButton" class="searchButton"><i aria-hidden class="fas fa-search-location"></i><span
-                    class="visuallyhidden"></button>
+            <input type="search" class="searchBar autocomplete" name="location" placeholder="Where are you running?" id="location">
+            <button type="submit" id="submitButton" class="searchButton"><i aria-hidden class="fas fa-search-location"></i></button>
         </form>
 
+        
         <!-- //content where we put the info pulled from the form query// -->
         <section class="returnedContent">
-            <div class="weather">
-
-            </div>
-            <div class="summary">
-
-            </div>
-
+            <div class="weather"> </div>
+            <div class="summary"> </div>
+            <div class="strava"> </div>
         </section>
+
+        <footer></footer>
 
     </section>
 
+    <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoImY83DtgdM97LRKQoA33y9VuicAtNPI&libraries=places"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="script.js"></script>
 </body>
