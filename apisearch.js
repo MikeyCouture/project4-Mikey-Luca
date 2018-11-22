@@ -45,14 +45,18 @@ const testApp = {};
 testApp.apiKey = `AIzaSyBXaDLbvS9m_4euOEdcVxbnybx8D7202C4`;
 let userlocation;
 
-testApp.geocode = function () {
+testApp.initAutocomplete = (id) => {
+    new google.maps.places.Autocomplete();
+}
+
+testApp.geocode = function (userlocation) {
     // let location = "Hanoi"
     $.ajax({
         url: `https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBXaDLbvS9m_4euOEdcVxbnybx8D7202C4`,
         method: "GET",
         dataType: "JSON",
         data: {
-            address: `${userlocation}`
+            address: userlocation
         }
     }).then((res) => {
         console.log(res);
@@ -67,7 +71,7 @@ $("form").on("submit", function(e){
     e.preventDefault();
     let userlocation = $("#location").val();
     console.log(userlocation);
-    testApp.geocode();
+    testApp.geocode(userlocation);
 });
 
 
