@@ -4,6 +4,11 @@ runApp.apiKey = `AIzaSyBXaDLbvS9m_4euOEdcVxbnybx8D7202C4`;
 let userlocation;
 let locationReturn = {};
 runApp.apiKeyTwo = `12db71466624332600c66c1d7e474f6d`;
+const newArray = [
+    ["Comment One", "Comment Two", "Comment Three"],
+    ["Comment Four", "Comment Five", "Comment 6ix"],
+    ["Comment Seven", "Comment Eight", "Comment Nine"]
+];
 
 // LOCATION FUNCTION & GOOGLE API AJAX CALL
 runApp.geocode = function (userlocation) {
@@ -17,11 +22,13 @@ runApp.geocode = function (userlocation) {
     }).then((res) => {
         // console.log(res);
         // let geoLocation = res.results[0].geometry.location;
+        $("#locationHeading").empty();
         locationReturn.cityName = res.results[0].formatted_address;
         locationReturn.lat = res.results[0].geometry.location.lat;
         locationReturn.lng = res.results[0].geometry.location.lng;
         console.log(locationReturn);
         runApp.weatherInfo(locationReturn.lat, locationReturn.lng);
+        $("#locationHeading").append(`${locationReturn.cityName}`);
     });
 };
 
@@ -30,7 +37,10 @@ runApp.weatherInfo = function (res1, res2) {
     $.ajax({
         url: `https://api.darksky.net/forecast/${runApp.apiKeyTwo}/${locationReturn.lat},${locationReturn.lng}`,
         method: "GET",
-        dataType: "JSONP"
+        dataType: "JSONP",
+        data: {
+            units: "si"
+        }
     }).then((res) => {
         // console.log(res);
         const weatherReturn = {
@@ -45,13 +55,14 @@ runApp.weatherInfo = function (res1, res2) {
         let weatherPrinter = function () {
             $(".weather").empty();
             $(".weather").append(`<canvas id= "${weatherReturn.icon}" width="80" height="80"></canvas>`);
-            $(".weather").append(`<p>${weatherReturn.temperature}</p>`);
+            $(".weather").append(`<p>Feels Like: ${Math.floor(weatherReturn.temperature)} °C</p>`);
             $(".weather").append(`<p>${weatherReturn.summary}</p>`);
-            $(".weather").append(`<p>${weatherReturn.humidity}</p>`);
-            $(".weather").append(`<p>${weatherReturn.windspeed}</p>`);
+            $(".weather").append(`<p>Humidity: ${Math.floor (weatherReturn.humidity * 100)} %</p>`);
+            $(".weather").append(`<p>Wind Speed: ${weatherReturn.windspeed} m/s</p>`);
             runApp.skyConLoader();
         };
         weatherPrinter();
+        runApp.blurbCondition(weatherReturn.temperature);
     });
 };
 
@@ -97,9 +108,31 @@ runApp.init = function(){
 // Document function ready. runApp init calling other functions
 $(function(){
     runApp.init();
+
 });
 
 
+
+// runApp.blurbCondition = (temperature) => {
+
+// // new var set to empty
+// const finalComment = 
+
+//     if (temperature < 0) {
+//         console.log(newArray[0][Math.floor(Math.random()
+//             * newArray.length)]);
+//     } else if (temperature < 12) {
+//         console.log(newArray[1][Math.floor(Math.random()
+//             * newArray.length)]);
+//     } else {
+//         console.log(newArray[2][Math.floor(Math.random()
+//             * newArray.length)]);
+//     }
+
+
+    // this where we would append said Var to DOM 
+
+};
 
 
 
