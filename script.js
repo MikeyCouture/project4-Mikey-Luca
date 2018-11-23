@@ -60,7 +60,6 @@ runApp.weatherInfo = function (res1, res2) {
             longHumidity: res.hourly.data[2].humidity,
             longWindspeed: res.hourly.data[2].windSpeed //meters per second
         };
-
     
         //call function that prints weatherReturn to DOM
         runApp.weatherPrinter(weatherReturn);
@@ -85,6 +84,15 @@ runApp.listenForSubmit = function(){
         $(".returnedContent").fadeIn(1000);
     });
 }
+
+//function that gets lat/lng from user
+runApp.fetchCoordinates = function () {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        locationReturn.lat = position.coords.latitude;
+        locationReturn.lng = position.coords.longitude;
+        runApp.weatherInfo(position.coords.latitude, position.coords.longitude);
+    });
+};
 
 // FUNCTION THAT APPENDS CURRENT WEATHER TO DOM
 runApp.weatherPrinter = function (weatherReturn) {
@@ -142,6 +150,7 @@ runApp.initAutocomplete = (id) => {
 runApp.init = function(){
     runApp.listenForSubmit();
     runApp.initAutocomplete("location");
+    runApp.fetchCoordinates();
     // runApp.geocode();
     // runApp.weatherInfo();
 }
@@ -153,7 +162,7 @@ $(function(){
 
 //Function to check if UVIndex is over 4, if so add it to results
 runApp.uvIndexChecker = (uv) => {
-    if (uv >= 4) {
+    if (uv >= 5) {
         $(".blurb").append("<p>UV Warning! Wear some suncreen!</p>");
         $(".weather").append(`<p>UV Index: ${uv}`);
         $(".longWeather").append(`<p>UV Index: ${uv}`);
