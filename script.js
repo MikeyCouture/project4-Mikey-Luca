@@ -20,12 +20,12 @@ runApp.geocode = function (userlocation) {
             address: userlocation
         }
     }).then((res) => {
-        console.log(res);
-        // let geoLocation = res.results[0].geometry.location;
+        let geoLocation = res.results[0].geometry.location;
         locationReturn.locationName = res.results[0].formatted_address;
         locationReturn.lat = res.results[0].geometry.location.lat;
         locationReturn.lng = res.results[0].geometry.location.lng;
         runApp.weatherInfo(locationReturn.lat, locationReturn.lng);
+        $("#locationHeading").append(`${locationReturn.locationName}`);
     });
 };
 
@@ -39,9 +39,6 @@ runApp.weatherInfo = function (res1, res2) {
             units: "si"
         }
     }).then((res) => {
-        console.log(res);
-
-
         //creating the object that contains out GET request from darksky
         const weatherReturn = {
             icon: res.currently.icon,
@@ -64,10 +61,7 @@ runApp.weatherInfo = function (res1, res2) {
         runApp.weatherPrinter(weatherReturn);
         runApp.blurbCondition(weatherReturn.temperature);
         runApp.headingPrinter(locationReturn.locationName);
-        runApp.headingPrinter(locationReturn.locationName);
         runApp.uvIndexChecker(weatherReturn.UVindex);
-        runApp.contentDisplay();
-
     });
 };
 
@@ -79,6 +73,7 @@ runApp.listenForSubmit = function(){
         e.preventDefault();
         userlocation = $("#location").val();
         runApp.geocode(userlocation);
+        runApp.contentDisplay();
     });
 }
 
@@ -93,7 +88,7 @@ runApp.fetchCoordinates = function () {
         locationReturn.lat = position.coords.latitude;
         locationReturn.lng = position.coords.longitude;
         runApp.weatherInfo(locationReturn.lat, locationReturn.lng);
-
+        console.log(locationReturn.lat, locationReturn.lng);
     });
 };
 
@@ -155,8 +150,6 @@ runApp.init = function(){
     runApp.listenForSubmit();
     runApp.initAutocomplete("location");
     runApp.fetchCoordinates();
-    // runApp.geocode();
-    // runApp.weatherInfo();
 }
 
 // Document function ready. runApp init calling other functions
@@ -200,24 +193,26 @@ runApp.blurbPrinter = (blurb) => {
     $(".blurb").empty();
     $('.blurb').append(`${blurb}`);
 };
+
 runApp.headingPrinter = (location) => {
+
+if (location){
     $("#locationHeading").html(`${location}`);
-}
+} else{
+    $("#locationHeading").html("We got you - let's go running!");
+};
 
 
+    // $("#locationHeading").html(`${location}`);
+
+};
 
 runApp.switchermadinger = () => {
     $(".switch").on("click", function(e){
         $(".longWeather").toggleClass("open");
         $(".weather").toggleClass("close");
     });
-}
+};
 
 runApp.switchermadinger();
-
-
-
-
-
-
 
