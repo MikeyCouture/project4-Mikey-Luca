@@ -6,3 +6,24 @@
 
 .visuallyhidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
 
+//GLOBAL STYLES
+html {
+   font-size: 62.5%;
+   font-family: $mainfont;
+}
+
+body {
+   font-size: 1.8rem;
+   color: $textcolor;
+   background: $backgroundcolor;
+   line-height: 1.6;
+}
+
+.wrapper {
+   max-width: 1600px;
+   width: 95%;
+   margin: 0 auto;
+   @media screen and (min-width: 700px) {
+      width: 85%;
+   }
+}

@@ -186,6 +186,36 @@ template {
   clip: rect(0 0 0);
   overflow: hidden; }
 
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif; }
+
+body {
+  font-size: 1.8rem;
+  color: #134f6b;
+  background: #dae5ee;
+  line-height: 1.6; }
+
+.wrapper {
+  max-width: 1600px;
+  width: 95%;
+  margin: 0 auto; }
+  @media screen and (min-width: 700px) {
+    .wrapper {
+      width: 85%; } }
+
+.landingPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
 .mainPage {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -197,8 +227,20 @@ template {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
-  .mainPage header {
-    text-align: center; }
+
+header {
+  text-align: center; }
+  header h1 {
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-shadow: -0.5px 0.5px #e69575, -1px 1px #e69575, -1.5px 1.5px #e69575, -2px 2px #e69575, -2.5px 2.5px #e69575, -3px 3px #e69575, -3.5px 3.5px #e69575, -4px 4px #e69575, -4.5px 4.5px #e69575; }
+
+.about {
+  margin: 25px;
+  position: absolute;
+  bottom: 10px; }
+  .aboutContent {
+    display: none; }
 
 .returnedContent {
   display: none; }
@@ -207,15 +249,19 @@ template {
   display: block; }
 
 .weather, .longWeather, .blurb, .strava {
-  background: #443abc;
-  border: 2px solid pink;
-  border-radius: 10px;
+  background: #dae5ee;
+  border: 5px solid #e69575;
+  border-radius: 5px;
   padding: 20px; }
 
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
 
 .longWeather {
   display: none; }
