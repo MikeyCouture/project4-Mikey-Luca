@@ -74,7 +74,9 @@ runApp.listenForSubmit = function(){
         let userlocation = $("#location").val();
         console.log(userlocation);
         runApp.geocode(userlocation);
+        $(".returnedContent").fadeIn(2000);
         $(".returnedContent").addClass("returnedContentShow");
+        $(".returnedContent").fadeIn(1000);
     });
 }
 
