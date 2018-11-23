@@ -8,47 +8,56 @@
     <title>Granite + Creosote Run App</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
 
     <!-- //start of main modular window// -->
-    <section class="mainPage">
+    <header class="landingPage">
 
         <!-- //header// -->
-        <header>
-            <h1>Running AppTASTIC</h1>
-            <!-- //use JS to put name of searched location here?// -->
-            <h2 id="locationHeading"></h2>
-        </header>
+        
+        <h1>R we Running yet?</h1>
+         <!-- //use JS to put name of searched location here?// -->
+         <h2 id="locationHeading"></h2>
+       
 
         <!-- //form that appears on splash page and also header// -->
         <form action="submit" class="searchForm">
             <label class="visuallyhidden" for="location">Enter a location</label>
             <input type="search" class="searchBar autocomplete" name="location" placeholder="Where are you running?" id="location">
-            <button type="submit" id="submitButton" class="searchButton"><i aria-hidden class="fas fa-search-location"></i></button>
+            <button type="submit" id="submitButton" class="searchButton"><i aria-hidden class="fas fa-search-location"></i>Go running</button>
         </form>
+
+        <div class="about">
+            <a href="">reveal info</a>
+            <div class="aboutContent">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ullam iste distinctio nobis soluta nulla itaque facere sed eius veritatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur maiores cumque odio saepe earum veniam aliquam nobis temporibus blanditiis consequuntur possimus sint ea aperiam distinctio, harum minus commodi! Quas vitae similique iusto amet omnis. Quas natus eos magni accusantium itaque.</p>
+                <a href="">hide info</a>
+            </div>
+        </div>
+    </header>
 
 
         
         
         <!-- //content where we put the info pulled from the form query// -->
-        <section class="returnedContent">
+
+    <section class="mainPage">
+        <section class="returnedContent wrapper">
             
             <label aria-checked class="switch">
                 <input id="checkbox" type="checkbox">
                 <span class=""></span>
             </label>
-            <div class="container">
+            <div class="container"></div>
                 <div class="weather"></div>
 
                 <div class="longWeather"></div>
 
                 <div class="blurb"> </div>
-
-                <div class="strava"> </div>
             </div>
 
         </section>
