@@ -206,11 +206,16 @@ template {
 .returnedContentShow {
   display: block; }
 
-.weather, .longWeather {
+.weather, .longWeather, .blurb, .strava {
   background: #443abc;
   border: 2px solid pink;
   border-radius: 10px;
   padding: 20px; }
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
 
 .longWeather {
   display: none; }
