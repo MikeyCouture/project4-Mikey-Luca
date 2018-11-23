@@ -7,7 +7,7 @@ let locationReturn = {};
 
 //array of blurbs that will be printed to DOM depending on the temperature of userlocation
 const blurbArray =  [
-    ["Comment One", "Comment Two", "Comment Three"],
+    ["It is pretty cold out there, bundle up and be sure to get those miles in", "`${weatherReturn.temperature}` isn't great, so bundle up.", "Comment Three"],
     ["Comment Four", "Comment Five", "Comment 6ix"],
     ["Comment Seven", "Comment Eight", "Comment Nine"]
 ];
@@ -41,7 +41,7 @@ runApp.weatherInfo = function (res1, res2) {
             units: "si"
         }
     }).then((res) => {
-
+        console.log(res);
         //creating the object that contains out GET request from darksky
         const weatherReturn = {
             icon: res.currently.icon,
@@ -49,6 +49,8 @@ runApp.weatherInfo = function (res1, res2) {
             summary: res.currently.summary,
             humidity: res.currently.humidity,
             windspeed: res.currently.windSpeed, //meters per second
+            //grab UV index
+            UVindex: res.currently.uvIndex,
 
             //requesting the weather forecast
             longIcon: res.hourly.data[2].icon,
@@ -58,14 +60,16 @@ runApp.weatherInfo = function (res1, res2) {
             longWindspeed: res.hourly.data[2].windSpeed //meters per second
         };
 
-        
-
+    
         //call function that prints weatherReturn to DOM
         runApp.weatherPrinter(weatherReturn);
         runApp.blurbCondition(weatherReturn.temperature);
         runApp.headingPrinter(locationReturn.locationName);
+        runApp.uvIndexChecker(weatherReturn.UVindex);
+        
     });
 };
+
 
 // SUBMIT EVENT LISTENER FOR LOCATION
 runApp.listenForSubmit = function(){
@@ -100,7 +104,7 @@ runApp.weatherPrinter = function (weatherReturn) {
     runApp.skyConLoader();
 };
 
-// CREATING SKYCONS FUNCTION
+// CREATING SKYCONS FUNCTION 
 runApp.skyConLoader = function(){
     let icons = new Skycons({ "color": "black" });
     icons.set("clear-day", Skycons.CLEAR_DAY);
@@ -144,29 +148,32 @@ $(function(){
     runApp.init();
 });
 
+//Function to check if UVIndex is over 4, if so add it to results
+runApp.uvIndexChecker = (uv) => {
+    if (uv >= 4) {
+        $(".blurb").append("<p>UV Warning! Wear some suncreen!</p>");
+        $(".weather").append(`<p>UV Index: ${uv}`);
+        $(".longWeather").append(`<p>UV Index: ${uv}`);
+    };
+}
+
+//function that checks temperature and prints a different string to the screen depending on returned temperature. randomly selects one of multiple possibilities within each result.
 runApp.blurbCondition = (temperature) => {
     let finalBlurb;
-    console.log(finalBlurb);
     if (temperature < 0) {
-        finalBlurb = (blurbArray[0][Math.floor(Math.random()
-            * blurbArray.length)]);
+        finalBlurb = (blurbArray[0][Math.floor(Math.random() * blurbArray.length)]);
     } else if (temperature < 12) {
-        finalBlurb = (blurbArray[1][Math.floor(Math.random()
-            * blurbArray.length)]);
+        finalBlurb = (blurbArray[1][Math.floor(Math.random() * blurbArray.length)]);
     } else {
-        finalBlurb = (blurbArray[2][Math.floor(Math.random()
-            * blurbArray.length)]);
+        finalBlurb = (blurbArray[2][Math.floor(Math.random() * blurbArray.length)]);
     }
     console.log(finalBlurb);
-    // this where we would append said Var to DOM 
     runApp.blurbPrinter(finalBlurb);
 };
 
 runApp.headingPrinter = (location) => {
     $("#locationHeading").html(`${location}`);
 }
-
-
 
 
 
