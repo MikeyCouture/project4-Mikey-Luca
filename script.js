@@ -24,10 +24,9 @@ runApp.geocode = function (userlocation) {
     }).then((res) => {
         console.log(res);
         // let geoLocation = res.results[0].geometry.location;
-        locationReturn.cityName = res.results[0].formatted_address;
+        locationReturn.locationName = res.results[0].formatted_address;
         locationReturn.lat = res.results[0].geometry.location.lat;
         locationReturn.lng = res.results[0].geometry.location.lng;
-        console.log(locationReturn);
         runApp.weatherInfo(locationReturn.lat, locationReturn.lng);
     });
 };
@@ -64,6 +63,7 @@ runApp.weatherInfo = function (res1, res2) {
         //call function that prints weatherReturn to DOM
         runApp.weatherPrinter(weatherReturn);
         runApp.blurbCondition(weatherReturn.temperature);
+        runApp.headingPrinter(locationReturn.locationName);
     });
 };
 
@@ -75,13 +75,13 @@ runApp.listenForSubmit = function(){
         let userlocation = $("#location").val();
         console.log(userlocation);
         runApp.geocode(userlocation);
+        $(".returnedContent").addClass("returnedContentShow");
     });
 }
 
 // FUNCTION THAT APPENDS CURRENT WEATHER TO DOM
 runApp.weatherPrinter = function (weatherReturn) {
     
-
     //printing of current weather
     $(".weather").empty();
     $(".longWeather").empty();
@@ -162,6 +162,10 @@ runApp.blurbCondition = (temperature) => {
     runApp.blurbPrinter(finalBlurb);
 };
 
+runApp.headingPrinter = (location) => {
+    $("#locationHeading").html(`${location}`);
+}
+
 
 
 
@@ -172,8 +176,9 @@ runApp.blurbPrinter = (blurb) => {
 
 };
 
+
 runApp.switchermadinger = () => {
-    $(".switch").on("click", function(){
+    $(".switch").on("click", function(e){
         $(".longWeather").toggleClass("open");
         $(".weather").toggleClass("close");
     });
