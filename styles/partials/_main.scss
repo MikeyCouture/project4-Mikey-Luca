@@ -1,0 +1,44 @@
+//STYLES FOR MAIN PAGE AFTER USER HAS SUBMITTED LOCATION
+
+.mainPage {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   header {
+      text-align: center;
+   }
+}
+//style that defaults query content to hide
+.returnedContent {
+   display: none;
+}
+
+//style added by jQuery to display the query content
+.returnedContentShow {
+   display: block;
+}
+
+//styles for the DIVS that hold both currentWeather and weatherForecast
+.weather, .longWeather {
+   background: #443abc;
+   border: 2px solid pink;
+   border-radius: 10px;
+   padding: 20px;
+
+}
+
+
+//sets weatherForecast as hidden until requested
+.longWeather {
+   display: none;
+}
+
+//styles used to toggle the weatherForecast and currentWeather
+.open {
+   display: block;
+}
+
+.close {
+   display: none;
+}
