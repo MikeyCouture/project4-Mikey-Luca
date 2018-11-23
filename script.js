@@ -66,6 +66,7 @@ runApp.weatherInfo = function (res1, res2) {
         runApp.blurbCondition(weatherReturn.temperature);
         runApp.headingPrinter(locationReturn.locationName);
         runApp.uvIndexChecker(weatherReturn.UVindex);
+        runApp.contentDisplay();
         
     });
 };
@@ -79,11 +80,15 @@ runApp.listenForSubmit = function(){
         let userlocation = $("#location").val();
         console.log(userlocation);
         runApp.geocode(userlocation);
-        $(".returnedContent").fadeIn(2000);
-        $(".returnedContent").addClass("returnedContentShow");
-        $(".returnedContent").fadeIn(1000);
+        
+  
     });
 }
+
+runApp.contentDisplay = function(){
+    $(".returnedContent").fadeIn(2000);
+    $(".returnedContent").addClass("returnedContentShow");
+};
 
 //function that gets lat/lng from user
 runApp.fetchCoordinates = function () {
