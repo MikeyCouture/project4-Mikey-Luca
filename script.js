@@ -6,11 +6,9 @@ let userlocation;
 let locationReturn = {};
 
 //array of blurbs that will be printed to DOM depending on the temperature of userlocation
-const blurbArray =  [
-    ["It is pretty cold out there, bundle up and be sure to get those miles in", "`${weatherReturn.temperature}` isn't great, so bundle up.", "Comment Three"],
-    ["Comment Four", "Comment Five", "Comment 6ix"],
-    ["Comment Seven", "Comment Eight", "Comment Nine"]
-];
+
+//
+
 
 // LOCATION FUNCTION & GOOGLE API AJAX CALL
 runApp.geocode = function (userlocation) {
@@ -42,30 +40,34 @@ runApp.weatherInfo = function (res1, res2) {
         }
     }).then((res) => {
         console.log(res);
+
+
         //creating the object that contains out GET request from darksky
         const weatherReturn = {
             icon: res.currently.icon,
-            temperature: res.currently.apparentTemperature,
+            temperature: Math.floor(res.currently.apparentTemperature), //rounds down temp
             summary: res.currently.summary,
-            humidity: res.currently.humidity,
-            windspeed: res.currently.windSpeed, //meters per second
+            humidity: Math.floor(res.currently.humidity * 100), //turns humidity % 
+            windspeed: (res.currently.windSpeed * 3.6).toFixed(2), //converts to km/h
             //grab UV index
             UVindex: res.currently.uvIndex,
 
             //requesting the weather forecast
             longIcon: res.hourly.data[2].icon,
-            longTemperature: res.hourly.data[2].apparentTemperature,
+            longTemperature: Math.floor(res.hourly.data[2].apparentTemperature), //rounds down temp
             longSummary: res.hourly.data[2].summary,
-            longHumidity: res.hourly.data[2].humidity,
-            longWindspeed: res.hourly.data[2].windSpeed //meters per second
+            longHumidity: Math.floor(res.hourly.data[2].humidity * 100), //turns humidity %
+            longWindspeed: (res.hourly.data[2].windSpeed * 3.6).toFixed(2)   //converts to km/h
         };
     
         //call function that prints weatherReturn to DOM
         runApp.weatherPrinter(weatherReturn);
         runApp.blurbCondition(weatherReturn.temperature);
         runApp.headingPrinter(locationReturn.locationName);
+        runApp.headingPrinter(locationReturn.locationName);
         runApp.uvIndexChecker(weatherReturn.UVindex);
-        
+        runApp.contentDisplay();
+
     });
 };
 
@@ -75,20 +77,23 @@ runApp.listenForSubmit = function(){
     //listen for submit of the form
     $("form").on("submit", function (e) {
         e.preventDefault();
-        let userlocation = $("#location").val();
-        console.log(userlocation);
+        userlocation = $("#location").val();
         runApp.geocode(userlocation);
-        $(".returnedContent").fadeIn(2000);
-        $(".returnedContent").addClass("returnedContentShow");
     });
 }
+
+runApp.contentDisplay = () => {
+    $(".returnedContent").fadeIn(2000);
+    $(".returnedContent").addClass("returnedContentShow");
+};
 
 //function that gets lat/lng from user
 runApp.fetchCoordinates = function () {
     navigator.geolocation.getCurrentPosition(function (position) {
         locationReturn.lat = position.coords.latitude;
         locationReturn.lng = position.coords.longitude;
-        runApp.weatherInfo(position.coords.latitude, position.coords.longitude);
+        runApp.weatherInfo(locationReturn.lat, locationReturn.lng);
+
     });
 };
 
@@ -99,17 +104,18 @@ runApp.weatherPrinter = function (weatherReturn) {
     $(".weather").empty();
     $(".longWeather").empty();
     $(".weather").append(`<canvas id="${weatherReturn.icon}" width="80" height="80"></canvas>`);
-    $(".weather").append(`<p>Feels Like: ${Math.floor(weatherReturn.temperature)} °C</p>`); //---- used math to round down the temperature
+    $(".weather").append(`<p>Feels Like: ${weatherReturn.temperature}°C</p>`); 
     $(".weather").append(`<p>${weatherReturn.summary}</p>`);
-    $(".weather").append(`<p>Humidity: ${Math.floor(weatherReturn.humidity * 100)} %</p>`);
-    $(".weather").append(`<p>Wind Speed: ${(weatherReturn.windspeed * 3.6).toFixed(2)} km/h</p>`); // ----- used math to convert m/s into km/h and move decimal point
+    $(".weather").append(`<p>Humidity: ${weatherReturn.humidity} %</p>`);
+    $(".weather").append(`<p>Wind Speed: ${weatherReturn.windspeed} km/h</p>`);  
 
     //printing of the weather forecast
     $(".longWeather").append(`<canvas id="${weatherReturn.longIcon} 2" width="80" height="80"></canvas>`);
-    $(".longWeather").append(`<p>Feels Like: ${Math.floor(weatherReturn.longTemperature)} °C</p>`); // ---- used math to round down the temperature
+    $(".longWeather").append(`<p>Feels Like: ${weatherReturn.longTemperature}°C</p>`); 
     $(".longWeather").append(`<p>${weatherReturn.longSummary}</p>`);
-    $(".longWeather").append(`<p>Humidity: ${Math.floor(weatherReturn.longHumidity * 100)} %</p>`);
-    $(".longWeather").append(`<p>Wind Speed: ${(weatherReturn.longWindspeed * 3.6).toFixed(2)} km/h</p>`); // ----- used math to convert m/s into km/h and move decimal point
+    $(".longWeather").append(`<p>Humidity: ${weatherReturn.longHumidity} %</p>`);
+    $(".longWeather").append(`<p>Wind Speed: ${weatherReturn.longWindspeed} km/h</p>`); 
+    //loading ICONS to be placed with everything else 
     runApp.skyConLoader();
 };
 
@@ -169,6 +175,15 @@ runApp.uvIndexChecker = (uv) => {
 
 //function that checks temperature and prints a different string to the screen depending on returned temperature. randomly selects one of multiple possibilities within each result.
 runApp.blurbCondition = (temperature) => {
+    //create array of comments so they are within scope of function
+    const blurbArray = [
+        [`It is pretty cold out there, bundle up and be sure to get those miles in`, `Well ${temperature} isn't great, so get some layers on.`, `Ya, you're gonna need a coat. Get out there.`],
+        [`Comment Four`, `Nice, ${temperature}. Great for a run.`, `Comment 6ix`],
+        [`Comment Seven`, `Comment Eight`, `Watch your hydration level out there and know your limits.`]
+    ];
+
+    //if else statement that takes temperature value and decides which array to grab from, randomizing the choice from within array.
+    //finalBlurb is the one which will be printed
     let finalBlurb;
     if (temperature < 0) {
         finalBlurb = (blurbArray[0][Math.floor(Math.random() * blurbArray.length)]);
@@ -177,21 +192,18 @@ runApp.blurbCondition = (temperature) => {
     } else {
         finalBlurb = (blurbArray[2][Math.floor(Math.random() * blurbArray.length)]);
     }
-    console.log(finalBlurb);
+    //print blurb
     runApp.blurbPrinter(finalBlurb);
 };
-
+//function that prints blurb to the screen
+runApp.blurbPrinter = (blurb) => {
+    $(".blurb").empty();
+    $('.blurb').append(`${blurb}`);
+};
 runApp.headingPrinter = (location) => {
     $("#locationHeading").html(`${location}`);
 }
 
-
-
-runApp.blurbPrinter = (blurb) => {
-    $(".blurb").empty();
-    $('.blurb').append(`${blurb}`);
-
-};
 
 
 runApp.switchermadinger = () => {
