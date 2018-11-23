@@ -24,12 +24,15 @@ form{
 }
 
 //styles for the DIVS that hold both currentWeather and weatherForecast
-.weather, .longWeather {
+.weather, .longWeather, .blurb, .strava {
    background: #443abc;
    border: 2px solid pink;
    border-radius: 10px;
    padding: 20px;
+}
 
+.container{
+    display: flex;
 }
 
 
