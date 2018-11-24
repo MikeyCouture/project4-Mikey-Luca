@@ -1,6 +1,161 @@
 //styles for loading/landing page
+
+header {
+      text-align: center;
+      overflow: hidden;
+   h1 {
+      // text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      text-shadow: -0.5px 0.5px $accentcolor, -1px 1px $accentcolor, -1.5px 1.5px $accentcolor, -2px 2px $accentcolor, -2.5px 2.5px $accentcolor, -3px 3px $accentcolor, -3.5px 3.5px $accentcolor, -4px 4px $accentcolor, -4.5px 4.5px $accentcolor;
+   }
+}
+
+header::before {
+   content: "";
+   position: relative;
+   top: -35px;
+   display: block;
+   width: 180%;
+   height: 110%;
+   transform: rotate(9deg);
+   background: $accentcolor;
+   z-index: 1;
+}
+
+header::after {
+   content: "";
+   position: relative;
+   top: 25px;
+   display: block;
+   width: 150%;
+   left: -2px;
+   height: 80%;
+   transform: rotate(-4deg);
+   background: $textcolor;
+   z-index: 1;
+}
+
+
 .landingPage {
    display: flex;
    flex-direction: column;
-   align-items: center;
+   height: 100vh;
+   position: relative;
+
+   h1 {
+      text-transform: uppercase;
+      text-align: left;
+      width: 45%;
+      font-size: 4.2rem;
+      align-self: flex-start;
+      margin-bottom: 120px;
+      @media screen and (min-width: 1000px){
+         font-size: 6rem;
+         width: 100%;
+      }
+   }
+
+   form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      text-transform: capitalize;
+      margin-bottom: 40px;
+      @media screen and (min-width: 1000px){
+         align-items: center;
+      }
+
+      .formContainer {
+         display: flex;
+         flex-direction: column;
+         width: 100%;
+         @media screen and (min-width: 1000px){
+         width: 50%;
+
+      }
+      }
+   }
+
+   label {
+      text-align: left;
+      padding: 10px 2px;
+   
+   }
+
+   input {
+      border: none;
+      padding: 15px 20px;
+      border-radius: 15px;
+      width: 100%;
+      font-style: italic;
+      transition: box-shadow 0.3s;
+      &:focus {
+         box-shadow: 0px 0px 3px $textcolor;
+      }
+   }
+
+   button {
+      cursor: pointer;
+      align-self: flex-end;
+      padding: 15px 20px;
+      width: 175px;
+      margin-top: 15px;
+      border-radius: 15px;
+      border: none;
+      color: $backgroundcolor;
+      background: $textcolor;
+      transition: background 0.3s;
+      &:hover{
+         background: lighten($textcolor, 10%);
+      }
+      @media screen and (min-width: 1000px){
+         align-self: center;
+      }
+   }
+
+   .about {
+      margin: 0;
+      i {
+         color: $textcolor;
+         font-size: 3rem;
+         transition: color 0.3s;
+         &:hover{
+            color: lighten($textcolor, 10%);
+         }
+      }
+   }
+
+   .aboutContent {
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      width: 80%;
+      left: -1000%;
+      top: 25%;
+      display: block;
+      z-index: 5;
+      background: $offwhite;
+      border-radius: 5px;
+      padding: 20px 50px;
+      text-align: left;
+      box-shadow: -1px 1px 3px rgb(101, 101, 101);
+      -webkit-transition: left 800ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+     
+      transition: left 800ms cubic-bezier(0.785, 0.135, 0.15, 0.86); 
+      @media screen and (min-width: 1000px){
+         width: 60%;
+         
+      }
+   }
+
+   .aboutContentOpen {
+      display: flex;
+      left: 10%;
+      @media screen and (min-width: 1000px){
+         left: 20%; 
+      }
+   }
+    
+
 }

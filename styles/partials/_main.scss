@@ -1,25 +1,25 @@
 //STYLES FOR MAIN PAGE AFTER USER HAS SUBMITTED LOCATION
 
 .mainPage {
+   // height: 100vh;
    display: flex;
    flex-direction: column;
    align-items: center;
-}
+   justify-content: center;
+   background: $textcolor;
+   overflow: hidden;
+   
 
-header {
-      text-align: center;
-
-   h1 {
-      // text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 700;
-      text-shadow: -0.5px 0.5px $accentcolor, -1px 1px $accentcolor, -1.5px 1.5px $accentcolor, -2px 2px $accentcolor, -2.5px 2.5px $accentcolor, -3px 3px $accentcolor, -3.5px 3.5px $accentcolor, -4px 4px $accentcolor, -4.5px 4.5px $accentcolor;
+   h2 {
+      margin-top: 50px;
+      color: $backgroundcolor;
    }
 }
 
+
+//styles for the popup window
 .about {
    margin: 25px;
-   position: absolute;
    bottom: 10px;
    &Content{
       display: none;
@@ -36,20 +36,38 @@ header {
    display: block;
 }
 
-form{
-    margin-top: 80px;;
-}
 
 //styles for the DIVS that hold both currentWeather and weatherForecast
-.weather, .longWeather, .blurb, .strava {
-   background: $backgroundcolor;
-   border: 5px solid $accentcolor;
-   border-radius: 5px;
-   padding: 20px;
+.weather, .longWeather {
+   text-align: center;
+   
+   p {
+      border-bottom: 1px solid rgba(121, 121, 121, 0.372);
+      margin: 20px;
+      padding-bottom: 5px;
+     
+   }
+}
+
+.blurb {
+   margin: 20px 0;
+   text-align: center;
+   p {
+      margin: 20px 10px;
+      padding: 0;
+      // text-align: left;
+   }
+   em {
+      color: tomato; //lololololololo
+   }
 }
 .container{
-    display: flex;
-    flex-direction: column;
+   display: flex;
+   flex-direction: column;
+   background: $offwhite;
+   border-radius: 5px;
+   padding: 10px;
+   margin-bottom: 25px;
 }
 
 //sets weatherForecast as hidden until requested
@@ -65,3 +83,124 @@ form{
 .close {
    display: none;
 }
+
+
+
+//NEW ASSHOLE SWITCH
+.switch{
+   align-self: center;
+   margin: 0 40px;
+   width: 100%;
+   height: 40px;
+   position: relative;
+   margin-bottom: 40px;
+   &::before {
+      content: "short Run";
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 10%;
+      width: 100px;
+      text-transform: capitalize;
+      cursor: pointer;
+      pointer-events: none;
+   }
+   &::after {
+      content: "long run";
+      position: absolute;
+      top: 0px;
+      right: 10%;
+      width: 100px;
+      text-transform: capitalize;
+      cursor: pointer;
+      pointer-events: none;
+   
+   }
+   input { 
+      opacity: 1;
+      width: 100%;
+      height: 40px;
+      cursor: pointer;
+   }
+}
+
+.slider {
+   pointer-events: none;
+   position: absolute;
+   cursor: pointer;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0px;
+   background-color: $offwhite;
+   transition: .4s;
+   padding-top: 20px;
+
+   &:before {
+      position: absolute;
+      content: "";
+      height: 50px;
+      width: 50px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      background-color: $textcolor;
+      box-shadow: 0px 0px 2px rgb(97, 97, 97);
+      transition: .4s;
+      z-index:1;
+   }
+   &:after {
+      position: absolute;
+      content: "";
+      height: 3px;
+      width: 98%;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      background-color: rgba(152, 152, 152, 0.365);
+      border: 0.5px solid rgba(0, 0, 0, 0.043);
+      transition: .4s;
+      border-radius: 5px;
+   }
+
+}
+
+input:checked + .slider {
+//   background-color: $offwhite;
+//   box-shadow: 0px 0px 2px black;
+}
+input:focus + .slider {
+//   box-shadow: 0px 0px 1px #dae5ee;
+}
+input:checked + .slider:before {
+  transform: translateX(100%);
+}
+// /* Rounded sliders */
+.slider.round {
+//   border-radius: 34px;
+}
+.slider.round:before {
+//   border-radius: 20%;
+  height: 4px;
+  width: 50%;
+}
+
+footer {
+   width: 100%;
+   height: 20px;
+   text-align: center;
+   background: $textcolor;
+   color: $backgroundcolor;
+   padding: 0;
+   margin: 0;
+   z-index: 2;
+   display: none;
+   p {
+      margin: 0;
+      padding: 5px;
+      font-size: 1.5rem;
+   }
+}
+
+
+
