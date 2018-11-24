@@ -17,6 +17,13 @@ header {
    }
 }
 
+header::before{
+  content: '';
+  width: 200px;
+  height: 200px;
+  color: black;
+}
+
 .about {
    margin: 25px;
    position: absolute;
@@ -65,3 +72,112 @@ form{
 .close {
    display: none;
 }
+
+
+
+// ------------
+// checkbox button
+
+.switch{
+    width: 60px;
+    height: 34px;
+    position: relative;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 50px;
+  height: 40px;
+}
+
+.slider {
+  pointer-events: none;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e69575;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  bottom: 0px;
+  background-color: #e69575;
+  box-shadow: 0px 0px 2px black;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #dae5ee;
+  box-shadow: 0px 0px 5px black;
+}
+
+input:focus + .slider {
+  box-shadow: 0px 0px 1px #dae5ee;
+}
+
+input:checked + .slider:before {
+  transform: translateX(35px);
+}
+
+// /* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+// -----------------------------------------------
+
+// .switch input { 
+//   opacity: 1;
+//   width: 100px;
+//   height: 40px;
+// }
+
+// label {
+// 	cursor: pointer;
+// 	text-indent: -9px;
+// 	width: 90px;
+// 	height: 35px;
+// 	background: grey;
+// 	display: block;
+// 	border-radius: 100px;
+// 	position: relative;
+// }
+
+// label:after {
+// 	content: '';
+// 	position: absolute;
+// 	top: 5px;
+// 	left: 5px;
+// 	width: 30px;
+// 	height: 30px;
+// 	background: #fff;
+// 	border-radius: 90px;
+// 	transition: 0.3s;
+// }
+
+// input:checked + label {
+// 	background: #bada55;
+// }
+
+// input:checked, label:after {
+// 	left: 20px;
+// 	transform: translateX(100%);
+// }
+
+// label:active:after {
+// 	width: 80px;
+// }
+
+
+
