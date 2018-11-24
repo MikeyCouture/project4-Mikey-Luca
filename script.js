@@ -78,19 +78,26 @@ runApp.listenForSubmit = function(){
 }
 
 runApp.contentDisplay = () => {
-    $(".returnedContent").fadeIn(2000);
+    $(".returnedContent").fadeIn(700);
     $(".returnedContent").addClass("returnedContentShow");
+    $("footer").toggle("slow");
 };
 
+
+$("button").on("click", function (e) {
+    $("html, body").animate({ scrollTop: $(window).height() }, 1200);
+});
+
+
 //function that gets lat/lng from user
-runApp.fetchCoordinates = function () {
-    navigator.geolocation.getCurrentPosition(function (position) {
-        locationReturn.lat = position.coords.latitude;
-        locationReturn.lng = position.coords.longitude;
-        runApp.weatherInfo(locationReturn.lat, locationReturn.lng);
-        console.log(locationReturn.lat, locationReturn.lng);
-    });
-};
+// runApp.fetchCoordinates = function () {
+//     navigator.geolocation.getCurrentPosition(function (position) {
+//         locationReturn.lat = position.coords.latitude;
+//         locationReturn.lng = position.coords.longitude;
+//         runApp.weatherInfo(locationReturn.lat, locationReturn.lng);
+//         console.log(locationReturn.lat, locationReturn.lng);
+//     });
+// };
 
 // FUNCTION THAT APPENDS CURRENT WEATHER TO DOM
 runApp.weatherPrinter = function (weatherReturn) {
@@ -116,7 +123,7 @@ runApp.weatherPrinter = function (weatherReturn) {
 
 // CREATING SKYCONS FUNCTION 
 runApp.skyConLoader = function(){
-    let icons = new Skycons({ "color": "black" });
+    let icons = new Skycons({ "color": "#134f6b" });
     icons.set("clear-day", Skycons.CLEAR_DAY);
     icons.set("clear-day 2", Skycons.CLEAR_DAY);
     icons.set("clear-night", Skycons.CLEAR_NIGHT);
@@ -145,22 +152,11 @@ runApp.initAutocomplete = (id) => {
     new google.maps.places.Autocomplete(document.getElementById(id));
 }
 
-// RUNNING FUNCTIONS - INIT
-runApp.init = function(){
-    runApp.listenForSubmit();
-    runApp.initAutocomplete("location");
-    runApp.fetchCoordinates();
-}
-
-// Document function ready. runApp init calling other functions
-$(function(){
-    runApp.init();
-});
 
 //Function to check if UVIndex is over 4, if so add it to results
 runApp.uvIndexChecker = (uv) => {
     if (uv >= 5) {
-        $(".blurb").append("<p>UV Warning! Wear some suncreen!</p>");
+        $(".blurb").append("<em>*UV warning, wear some SPF*</em>");
         $(".weather").append(`<p>UV Index: ${uv}`);
         $(".longWeather").append(`<p>UV Index: ${uv}`);
     };
@@ -170,17 +166,17 @@ runApp.uvIndexChecker = (uv) => {
 runApp.blurbCondition = (temperature) => {
     //create array of comments so they are within scope of function
     const blurbArray = [
-        [`It is pretty cold out there, bundle up and be sure to get those miles in`, `Well ${temperature} isn't great, so get some layers on.`, `Ya, you're gonna need a coat. Get out there.`],
-        [`Comment Four`, `Nice, ${temperature}. Great for a run.`, `Comment 6ix`],
-        [`Comment Seven`, `Comment Eight`, `Watch your hydration level out there and know your limits.`]
+        [`It is pretty cold out there, bundle up and be sure to get those miles in`, `Well ${temperature} isn't great, so get some layers on and get out there.`, `Ya, you're gonna need a coat but its worth it to hit those goals.`],
+        [`Put on those fast shoes and hit cruisin' altitude. 🤙`, `Nice, ${temperature}°C. Great for a run!`, ``, `Dug would love to run in this weather, do it for him.`],
+        [`${temperature}°C can be tough on some people, but we believe in you.`, `It's pretty hot out there... make sure to bring some water.`, `Watch your hydration level out there and know your limits.`]
     ];
 
     //if else statement that takes temperature value and decides which array to grab from, randomizing the choice from within array.
     //finalBlurb is the one which will be printed
     let finalBlurb;
-    if (temperature < 0) {
+    if (temperature < 4) {
         finalBlurb = (blurbArray[0][Math.floor(Math.random() * blurbArray.length)]);
-    } else if (temperature < 12) {
+    } else if (temperature < 20) {
         finalBlurb = (blurbArray[1][Math.floor(Math.random() * blurbArray.length)]);
     } else {
         finalBlurb = (blurbArray[2][Math.floor(Math.random() * blurbArray.length)]);
@@ -191,7 +187,7 @@ runApp.blurbCondition = (temperature) => {
 //function that prints blurb to the screen
 runApp.blurbPrinter = (blurb) => {
     $(".blurb").empty();
-    $('.blurb').append(`${blurb}`);
+    $(".blurb").append(`<p>${blurb}</p>`);
 };
 
 runApp.headingPrinter = (location) => {
@@ -207,12 +203,36 @@ if (location){
 
 };
 
-runApp.switchermadinger = () => {
+runApp.weatherDisplaySwitch = () => {
     $(".switch").on("click", function(e){
         $(".longWeather").toggleClass("open");
         $(".weather").toggleClass("close");
     });
 };
 
-runApp.switchermadinger();
+runApp.weatherDisplaySwitch();
 
+//function that gives popUp for info the ability to move in
+runApp.infoPopUp = () => {
+    $(".openSwitch").on("click", function(e){
+        e.preventDefault();
+        $(".aboutContent").addClass("aboutContentOpen");
+    })
+    $(".closeSwitch").on("click", function (e) {
+        e.preventDefault();
+        $(".aboutContent").removeClass("aboutContentOpen");
+    })
+}
+
+// RUNNING FUNCTIONS - INIT
+runApp.init = function () {
+    runApp.listenForSubmit();
+    runApp.initAutocomplete("location");
+    runApp.infoPopUp();
+    // runApp.fetchCoordinates();
+}
+
+// Document function ready. runApp init calling other functions
+$(function () {
+    runApp.init();
+});
