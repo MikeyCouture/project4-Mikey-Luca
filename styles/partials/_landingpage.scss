@@ -32,6 +32,9 @@ header {
       transform: rotate(9deg);
       background: $accentcolor;
       z-index: 1;
+      @media screen and (max-width: 320px){
+         display: none;
+      }
    }
    &::after {
          content: "";
@@ -44,6 +47,9 @@ header {
       transform: rotate(-3deg);
       background: $textcolor;
       z-index: 1;
+      @media screen and (max-width: 320px){
+         display: none;
+      }
    }
 }
 //HEADER STYLES END

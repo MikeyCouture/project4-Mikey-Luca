@@ -61,6 +61,7 @@ runApp.weatherInfo = function (res1, res2) {
         runApp.blurbCondition(weatherReturn.temperature, weatherReturn.temperatureFar);
         runApp.headingPrinter(locationReturn.locationName);
         runApp.uvIndexChecker(weatherReturn.UVindex);
+        console.log(weatherReturn.longTemperatureFar);
     });
 };
 
