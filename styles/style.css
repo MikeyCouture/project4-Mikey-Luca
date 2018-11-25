@@ -248,6 +248,9 @@ header {
     transform: rotate(9deg);
     background: #e69575;
     z-index: 1; }
+    @media screen and (max-width: 320px) {
+      header::before {
+        display: none; } }
   header::after {
     content: "";
     position: relative;
@@ -261,6 +264,9 @@ header {
     transform: rotate(-3deg);
     background: #134f6b;
     z-index: 1; }
+    @media screen and (max-width: 320px) {
+      header::after {
+        display: none; } }
 
 form {
   display: -webkit-box;
