@@ -1,42 +1,25 @@
-//STYLES FOR MAIN PAGE AFTER USER HAS SUBMITTED LOCATION
-
+//GENERAL MAIN PAGE STYLES
 .mainPage {
-   // height: 100vh;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
    background: $textcolor;
    overflow: hidden;
    
-
    h2 {
-      margin-top: 50px;
+      margin-top: 30px;
       color: $backgroundcolor;
    }
 }
 
-//styles for the popup window
-.about {
-   margin: 25px;
-   bottom: 10px;
-   &Content{
-      display: none;
-   }
+
+//MAIN CONTAINER STYLES
+.container{
+   display: flex;
+   flex-direction: column;
+   background: $offwhite;
+   border-radius: 5px;
+   padding: 10px;
+   margin-bottom: 25px;
 }
 
-//style that defaults query content to hide
-.returnedContent {
-   display: none;
-}
-
-//style added by jQuery to display the query content
-.returnedContentShow {
-   display: block;
-}
-
-
-//styles for the DIVS that hold both currentWeather and weatherForecast
 .weather, .longWeather {
    text-align: center;
    
@@ -54,50 +37,14 @@
    p {
       margin: 20px 10px;
       padding: 0;
-      // text-align: left;
    }
    em {
-      color: tomato; //lololololololo
+      color: tomato; 
    }
 }
-.container{
-   display: flex;
-   flex-direction: column;
-   background: $offwhite;
-   border-radius: 5px;
-   padding: 10px;
-   margin-bottom: 25px;
-}
+//MAIN CONTAINER STYLES END
 
-.container::after {
-   content: "";
-   position: relative;
-   top: 25px;
-   display: block;
-   width: 150%;
-   left: -2px;
-   height: 80%;
-   transform: rotate(-4deg);
-   background: $textcolor;
-   z-index: 1;
-}
-
-//sets weatherForecast as hidden until requested
-.longWeather {
-   display: none;
-}
-
-//styles used to toggle the weatherForecast and currentWeather
-.open {
-   display: block;
-}
-
-.close {
-   display: none;
-}
-
-
-//NEW SWITCH
+//SHORT LONG RUN SWITCH STYLES 
 .switch{
    align-self: center;
    margin: 0 40px;
@@ -105,27 +52,26 @@
    height: 40px;
    position: relative;
    margin-bottom: 40px;
-   &::before {
+   
+   &::before, &::after {
       content: "short Run";
       position: absolute;
       z-index: 10;
       top: 0;
-      left: 10%;
-      width: 100px;
-      text-transform: capitalize;
+      width: 120px;
+      text-transform:  uppercase;
       cursor: pointer;
       pointer-events: none;
    }
+
+   &::before  {
+      content: "short Run"; 
+      left: 10%;
+   }
+   
    &::after {
       content: "long run";
-      position: absolute;
-      top: 0px;
-      right: 10%;
-      width: 100px;
-      text-transform: capitalize;
-      cursor: pointer;
-      pointer-events: none;
-   
+      right: 6%;
    }
    input { 
       opacity: 1;
@@ -155,7 +101,7 @@
       bottom: 0px;
       left: 0px;
       right: 0px;
-      background-color: $textcolor;
+      background-color: $accentcolor;
       box-shadow: 0px 0px 2px rgb(97, 97, 97);
       transition: .4s;
       z-index:1;
@@ -173,22 +119,17 @@
       transition: .4s;
       border-radius: 5px;
    }
-
 }
-
 input:checked + .slider:before {
   transform: translateX(100%);
 }
-// /* Rounded sliders */
-.slider.round {
-//   border-radius: 34px;
-}
 .slider.round:before {
-//   border-radius: 20%;
   height: 4px;
   width: 50%;
 }
+//SHORT RUN LONG RUN SWITCH STYLE END
 
+//FOOTER STYLES
 footer {
    width: 100%;
    height: 20px;
@@ -205,6 +146,31 @@ footer {
       font-size: 1.5rem;
    }
 }
+//FOOTER STYLES END
+
+
+//TOGGLE CLASS STYLES START
+//sets returnedContent as hidden / show
+.returnedContent {
+   display: none;
+}
+.returnedContentShow {
+   display: block;
+}
+
+//sets weatherForecast as hidden until requested
+.longWeather {
+   display: none;
+}
+
+//styles used to toggle the weatherForecast and currentWeather
+.open {
+   display: block;
+}
+.close {
+   display: none;
+}
+//TOGGLE CLASS STYLES END
 
 
 
