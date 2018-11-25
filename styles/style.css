@@ -205,43 +205,12 @@ body {
   @media screen and (min-width: 700px) {
     .wrapper {
       width: 85%; } }
+  @media screen and (min-width: 900px) {
+    .wrapper {
+      width: 70%; } }
 
 header {
   text-align: center;
-  overflow: hidden; }
-  header h1 {
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    text-shadow: -0.5px 0.5px #e69575, -1px 1px #e69575, -1.5px 1.5px #e69575, -2px 2px #e69575, -2.5px 2.5px #e69575, -3px 3px #e69575, -3.5px 3.5px #e69575, -4px 4px #e69575, -4.5px 4.5px #e69575; }
-
-header::before {
-  content: "";
-  position: relative;
-  top: -35px;
-  display: block;
-  width: 180%;
-  height: 110%;
-  -webkit-transform: rotate(9deg);
-  -ms-transform: rotate(9deg);
-  transform: rotate(9deg);
-  background: #e69575;
-  z-index: 1; }
-
-header::after {
-  content: "";
-  position: relative;
-  top: 25px;
-  display: block;
-  width: 150%;
-  left: -2px;
-  height: 80%;
-  -webkit-transform: rotate(-4deg);
-  -ms-transform: rotate(-4deg);
-  transform: rotate(-4deg);
-  background: #134f6b;
-  z-index: 1; }
-
-.landingPage {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -250,20 +219,66 @@ header::after {
   -ms-flex-direction: column;
   flex-direction: column;
   height: 100vh;
-  position: relative; }
-  .landingPage h1 {
+  position: relative;
+  overflow: hidden; }
+  header h1 {
     text-transform: uppercase;
     text-align: left;
-    width: 45%;
+    width: 50%;
     font-size: 4.2rem;
     -ms-flex-item-align: start;
     align-self: flex-start;
-    margin-bottom: 120px; }
+    margin-bottom: 120px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-shadow: -0.5px 0.5px #e69575, -1px 1px #e69575, -1.5px 1.5px #e69575, -2px 2px #e69575, -2.5px 2.5px #e69575, -3px 3px #e69575, -3.5px 3.5px #e69575, -4px 4px #e69575, -4.5px 4.5px #e69575, -5px 5px #5b5a5a; }
     @media screen and (min-width: 1000px) {
-      .landingPage h1 {
+      header h1 {
         font-size: 6rem;
         width: 100%; } }
-  .landingPage form {
+  header::before {
+    content: "";
+    position: relative;
+    top: -35px;
+    display: block;
+    width: 180%;
+    height: 110%;
+    -webkit-transform: rotate(9deg);
+    -ms-transform: rotate(9deg);
+    transform: rotate(9deg);
+    background: #e69575;
+    z-index: 1; }
+  header::after {
+    content: "";
+    position: relative;
+    top: 25px;
+    display: block;
+    width: 150%;
+    left: -2px;
+    height: 80%;
+    -webkit-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+    background: #134f6b;
+    z-index: 1; }
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  text-transform: capitalize;
+  margin-bottom: 40px; }
+  @media screen and (min-width: 1000px) {
+    form {
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; } }
+  form .formContainer {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -271,30 +286,14 @@ header::after {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    width: 100%;
-    text-transform: capitalize;
-    margin-bottom: 40px; }
+    width: 100%; }
     @media screen and (min-width: 1000px) {
-      .landingPage form {
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center; } }
-    .landingPage form .formContainer {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      width: 100%; }
-      @media screen and (min-width: 1000px) {
-        .landingPage form .formContainer {
-          width: 50%; } }
-  .landingPage label {
+      form .formContainer {
+        width: 50%; } }
+  form label {
     text-align: left;
     padding: 10px 2px; }
-  .landingPage input {
+  form input {
     border: none;
     padding: 15px 20px;
     border-radius: 15px;
@@ -305,10 +304,10 @@ header::after {
     -o-transition: box-shadow 0.3s;
     transition: box-shadow 0.3s;
     transition: box-shadow 0.3s, -webkit-box-shadow 0.3s; }
-    .landingPage input:focus {
+    form input:focus {
       -webkit-box-shadow: 0px 0px 3px #134f6b;
       box-shadow: 0px 0px 3px #134f6b; }
-  .landingPage button {
+  form button {
     cursor: pointer;
     -ms-flex-item-align: end;
     align-self: flex-end;
@@ -322,61 +321,26 @@ header::after {
     -webkit-transition: background 0.3s;
     -o-transition: background 0.3s;
     transition: background 0.3s; }
-    .landingPage button:hover {
+    form button:hover {
       background: #1b6f96; }
     @media screen and (min-width: 1000px) {
-      .landingPage button {
+      form button {
         -ms-flex-item-align: center;
         align-self: center; } }
-  .landingPage .about {
-    margin: 0; }
-    .landingPage .about i {
-      color: #134f6b;
-      font-size: 3rem;
-      -webkit-transition: color 0.3s;
-      -o-transition: color 0.3s;
-      transition: color 0.3s; }
-      .landingPage .about i:hover {
-        color: #1b6f96; }
-  .landingPage .aboutContent {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    position: absolute;
-    width: 80%;
-    left: -1000%;
-    top: 25%;
-    display: block;
-    z-index: 5;
-    background: #faf5f5;
-    border-radius: 5px;
-    padding: 20px 50px;
-    text-align: left;
-    -webkit-box-shadow: -1px 1px 3px #656565;
-    box-shadow: -1px 1px 3px #656565;
-    -webkit-transition: left 800ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    -o-transition: left 800ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    transition: left 800ms cubic-bezier(0.785, 0.135, 0.15, 0.86); }
-    @media screen and (min-width: 1000px) {
-      .landingPage .aboutContent {
-        width: 60%; } }
-  .landingPage .aboutContentOpen {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    left: 10%; }
-    @media screen and (min-width: 1000px) {
-      .landingPage .aboutContentOpen {
-        left: 20%; } }
 
-.mainPage {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.landingPage .about {
+  margin: 25px 25px 5px 25px;
+  bottom: 10px; }
+  .landingPage .about i {
+    color: #134f6b;
+    font-size: 3rem;
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s; }
+    .landingPage .about i:hover {
+      color: #1b6f96; }
+
+.landingPage .aboutContent {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -384,26 +348,55 @@ header::after {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  position: absolute;
+  width: 90%;
+  left: -1000%;
+  top: 5%;
+  display: block;
+  z-index: 5;
+  background: #faf5f5;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-align: left;
+  -webkit-box-shadow: -1px 1px 3px #656565;
+  box-shadow: -1px 1px 3px #656565;
+  -webkit-transition: left 800ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  -o-transition: left 800ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: left 800ms cubic-bezier(0.785, 0.135, 0.15, 0.86); }
+  @media screen and (min-width: 768px) {
+    .landingPage .aboutContent {
+      width: 60%;
+      top: 25%;
+      padding: 20px 30px; } }
+
+.landingPage .aboutContentOpen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  left: 5%; }
+  @media screen and (min-width: 768px) {
+    .landingPage .aboutContentOpen {
+      left: 20%; } }
+
+.mainPage {
   background: #134f6b;
   overflow: hidden; }
   .mainPage h2 {
-    margin-top: 50px;
+    margin-top: 30px;
     color: #dae5ee; }
 
-.about {
-  margin: 25px;
-  bottom: 10px; }
-  .aboutContent {
-    display: none; }
-
-.returnedContent {
-  display: none; }
-
-.returnedContentShow {
-  display: block; }
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background: #faf5f5;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 25px; }
 
 .weather, .longWeather {
   text-align: center; }
@@ -421,28 +414,6 @@ header::after {
   .blurb em {
     color: tomato; }
 
-.container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  background: #faf5f5;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 25px; }
-
-.longWeather {
-  display: none; }
-
-.open {
-  display: block; }
-
-.close {
-  display: none; }
-
 .switch {
   -ms-flex-item-align: center;
   align-self: center;
@@ -451,25 +422,21 @@ header::after {
   height: 40px;
   position: relative;
   margin-bottom: 40px; }
-  .switch::before {
+  .switch::before, .switch::after {
     content: "short Run";
     position: absolute;
     z-index: 10;
     top: 0;
-    left: 10%;
-    width: 100px;
-    text-transform: capitalize;
+    width: 120px;
+    text-transform: uppercase;
     cursor: pointer;
     pointer-events: none; }
+  .switch::before {
+    content: "short Run";
+    left: 10%; }
   .switch::after {
     content: "long run";
-    position: absolute;
-    top: 0px;
-    right: 10%;
-    width: 100px;
-    text-transform: capitalize;
-    cursor: pointer;
-    pointer-events: none; }
+    right: 6%; }
   .switch input {
     opacity: 1;
     width: 100%;
@@ -497,7 +464,7 @@ header::after {
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background-color: #134f6b;
+    background-color: #e69575;
     -webkit-box-shadow: 0px 0px 2px #616161;
     box-shadow: 0px 0px 2px #616161;
     -webkit-transition: .4s;
@@ -542,3 +509,18 @@ footer {
     margin: 0;
     padding: 5px;
     font-size: 1.5rem; }
+
+.returnedContent {
+  display: none; }
+
+.returnedContentShow {
+  display: block; }
+
+.longWeather {
+  display: none; }
+
+.open {
+  display: block; }
+
+.close {
+  display: none; }
