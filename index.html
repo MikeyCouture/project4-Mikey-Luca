@@ -5,79 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Granite + Creosote Run App</title>
+    <title>Run Forecast</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png"/>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
-    <!-- //start of main modular window// -->
+
+    <!-- START OF HEADER -->
     <header class="landingPage">
-    <div class="wrapper">
-
-        <!-- //header// -->
-        
-        <h1>Run Forecast</h1>
-         <!-- //use JS to put name of searched location here?// -->
-        
-
-        <!-- //form that appears on splash page and also header// -->
-        <form action="submit" class="searchForm">
-            <div class="formContainer">
-                <label for="location">Enter any location</label>
-                <input type="search" class="searchBar autocomplete" name="location" placeholder="place, somewhere" id="location">
-                <button type="submit" id="submitButton" class="searchButton">Show Results</button>
-            </div>
-        </form>
-
-        <div class="about">
-            <a class="openSwitch" href=""><i class="fas fa-info-circle""></i><span class="visuallyhidden">Link to open Info section</span></label></a>
-            <div class="aboutContent">
-                <p>This is Run Forecast. Your last stop on the way out the door. Up to date current weather based on the conditions that affect you mid-run. Windspeed, apparent temperatre, humidity and even UV index warnings.</p>
-                <p>Enter your location and hit 'show results' and get your forecast, toggle 'long run' to see the forecast for the next two hours so you don't get stranded in the rain at kilometer 15.</p>
-                <a href="#" class="closeSwitch"><i aria-hidden class="fas fa-times-circle"></i><span class="visuallyhidden">close pop-up window</span></a>
+        <div class="wrapper">
+            <h1>Run Forecast</h1>
+            <!-- //form that appears on splash page-->
+            <form action="submit" class="searchForm">
+                <div class="formContainer">
+                    <label for="location">Enter any location</label>
+                    <input type="search" class="searchBar autocomplete" name="location" placeholder="place, somewhere" id="location" required>
+                    <button type="submit" id="submitButton" class="searchButton">Show Results</button>
+                </div>
+            </form>
+            <!-- about section + pop up window -->
+            <div class="about">
+                <a class="openSwitch" href="#"><i class="fas fa-info-circle""></i><span class="visuallyhidden">click to open about section</span></label></a>
+                <div class="aboutContent">
+                    <p>This is Run Forecast. Your last stop on the way out the door. Up to date current weather based on the conditions that affect you mid-run. Windspeed, apparent temperatre humidity and even UV index warnings.</p>
+                    <p>Enter your location and hit 'show results' and get your forecast. Toggle 'long run' to see the forecast for the next two hours so you don't get stranded in the rain at kilometer 15.</p>
+                    <a href="#" class="closeSwitch"><i aria-hidden class="fas fa-times-circle"></i><span class="visuallyhidden">click to close about section</span></a>
+                </div>
             </div>
         </div>
-        <div class="empty2"></div>
-    </div>
     </header>
+    <!-- end of header -->
 
-
-   
-
-
+    <!-- //content where we put the info pulled from the form query// -->
+    <section class="mainPage">
+        <!-- returned Content Section -->
+        <section id="scroll" class="returnedContent wrapper">
+        <!-- header populated by userlocation -->
+        <h2 id="locationHeading"></h2>
         
-        
-        <!-- //content where we put the info pulled from the form query// -->
-
-        <section class="mainPage">
-            <section id="scroll" class="returnedContent wrapper">
-            <h2 id="locationHeading"></h2>
-            
-            
-            
+        <!-- Container for weather module -->
             <div class="container">
+                <!-- shortrun longrun toggle bar -->
                 <label checked="checked" class="switch">
                     <input id="switch" type="checkbox">
                     <span class="slider round"></span>
                 </label>
-                <div class="weather">
-                </div>
-                <div class="longWeather">
-                </div>
+                <!-- container for current weather -->
+                <div class="weather"></div>
+                <!-- container for weather forecast -->
+                <div class="longWeather"></div>
+                <!-- container for conditional blurb -->
                 <div class="blurb"></div>
             </div>
-
         </section>
-
+        <!-- end of returned Content -->
     </section>
+    <!-- end of Mainpage -->
     
+    <!-- footer -->
     <footer>
         <p>©granite+creaosote 2018</p>
     </footer>
 
+    <!-- import of required scripts -->
     <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoImY83DtgdM97LRKQoA33y9VuicAtNPI&libraries=places"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
