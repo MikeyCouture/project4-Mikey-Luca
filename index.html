@@ -13,58 +13,70 @@
 </head>
 
 <body>
-
     <!-- //start of main modular window// -->
     <header class="landingPage">
+    <div class="wrapper">
 
         <!-- //header// -->
         
-        <h1>R we Running yet?</h1>
+        <h1>Run Forecast</h1>
          <!-- //use JS to put name of searched location here?// -->
-         <h2 id="locationHeading"></h2>
-       
+        
 
         <!-- //form that appears on splash page and also header// -->
         <form action="submit" class="searchForm">
-            <label class="visuallyhidden" for="location">Enter a location</label>
-            <input type="search" class="searchBar autocomplete" name="location" placeholder="Where are you running?" id="location">
-            <button type="submit" id="submitButton" class="searchButton">Go running</button>
+            <div class="formContainer">
+                <label for="location">Enter any location</label>
+                <input type="search" class="searchBar autocomplete" name="location" placeholder="place, somewhere" id="location">
+                <button type="submit" id="submitButton" class="searchButton">Show Results</button>
+            </div>
         </form>
 
         <div class="about">
-            <a href="">reveal info</a>
+            <a class="openSwitch" href=""><i class="fas fa-info-circle""></i><span class="visuallyhidden">Link to open Info section</span></label></a>
             <div class="aboutContent">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ullam iste distinctio nobis soluta nulla itaque facere sed eius veritatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur maiores cumque odio saepe earum veniam aliquam nobis temporibus blanditiis consequuntur possimus sint ea aperiam distinctio, harum minus commodi! Quas vitae similique iusto amet omnis. Quas natus eos magni accusantium itaque.</p>
-                <a href="">hide info</a>
+                <p>This is Run Forecast. Your last stop on the way out the door. Up to date current weather based on the conditions that affect you mid-run. Windspeed, apparent temperatre, humidity and even UV index warnings.</p>
+                <p>Enter your location and hit 'show results' and get your forecast, toggle 'long run' to see the forecast for the next two hours so you don't get stranded in the rain at kilometer 15.</p>
+                <a href="#" class="closeSwitch"><i aria-hidden class="fas fa-times-circle"></i><span class="visuallyhidden">close pop-up window</span></a>
             </div>
         </div>
+        <div class="empty2"></div>
+    </div>
     </header>
+
+
+   
 
 
         
         
         <!-- //content where we put the info pulled from the form query// -->
 
-    <section class="mainPage">
-        <section class="returnedContent wrapper">
+        <section class="mainPage">
+            <section id="scroll" class="returnedContent wrapper">
+            <h2 id="locationHeading"></h2>
             
-            <label aria-checked class="switch">
-                <input id="switch" type="checkbox" checked>
-                <span class="slider round"></span>
-            </label>
-            <div class="container"></div>
-                <div class="weather"></div>
-
-                <div class="longWeather"></div>
-
-                <div class="blurb"> </div>
+            
+            
+            <div class="container">
+                <label checked="checked" class="switch">
+                    <input id="switch" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <div class="weather">
+                </div>
+                <div class="longWeather">
+                </div>
+                <div class="blurb"></div>
             </div>
 
         </section>
 
-        <footer></footer>
-
     </section>
+    
+    <footer>
+        <p>©granite+creaosote 2018</p>
+    </footer>
 
     <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoImY83DtgdM97LRKQoA33y9VuicAtNPI&libraries=places"></script>
