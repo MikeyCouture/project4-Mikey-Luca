@@ -420,6 +420,10 @@ form {
   .blurb em {
     color: tomato; }
 
+.searchAgain {
+  margin: 0;
+  text-align: center; }
+
 .switch {
   -ms-flex-item-align: center;
   align-self: center;
