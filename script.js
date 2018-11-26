@@ -96,6 +96,7 @@ runApp.weatherPrinter = function (weatherReturn) {
     //printing of current weather (appending current weather to DOM)
     $(".weather").empty();
     $(".longWeather").empty();
+    $(".weather").append(`<h3>Current Weather</h3>`);
     $(".weather").append(`<canvas id="${weatherReturn.icon}" width="80" height="80"></canvas>`);
     $(".weather").append(`<p>Feels Like: ${weatherReturn.temperature}°C / ${weatherReturn.temperatureFar}°F</p>`); 
     $(".weather").append(`<p>${weatherReturn.summary}</p>`);
@@ -103,6 +104,7 @@ runApp.weatherPrinter = function (weatherReturn) {
     $(".weather").append(`<p>Wind Speed: ${weatherReturn.windspeed} km/h</p>`);  
 
     //printing of the weather forecast (appending longWeather to DOM)
+    $(".longWeather").append(`<h3>Two Hour Forecast</h3>`)
     $(".longWeather").append(`<canvas id="${weatherReturn.longIcon} 2" width="80" height="80"></canvas>`);
     $(".longWeather").append(`<p>Feels Like: ${weatherReturn.longTemperature}°C / ${weatherReturn.longTemperatureFar}°F</p>`); 
     $(".longWeather").append(`<p>${weatherReturn.longSummary}</p>`);

@@ -22,6 +22,10 @@
 
 .weather, .longWeather {
    text-align: center;
+
+   h3 {
+      margin-top: 0;
+   }
    
    p {
       border-bottom: 1px solid rgba(121, 121, 121, 0.372);
@@ -32,7 +36,7 @@
 }
 
 .blurb {
-   margin: 20px 0;
+   margin: 0;
    text-align: center;
    p {
       margin: 20px 10px;
@@ -127,6 +131,8 @@ input:checked + .slider:before {
   height: 4px;
   width: 50%;
 }
+
+
 //SHORT RUN LONG RUN SWITCH STYLE END
 
 //FOOTER STYLES
