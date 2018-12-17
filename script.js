@@ -79,9 +79,11 @@ runApp.listenForSubmit = function(){
 
 //function that runs on submit and adds a "show" class and fade in to returned content + footer
 runApp.contentDisplay = () => {
-    $(".returnedContent").fadeIn(700);
-    $(".returnedContent").addClass("returnedContentShow");
-    $("footer").toggle("slow");
+    setTimeout(function () { 
+        $(".returnedContent").fadeIn(900);
+        $(".returnedContent").addClass("returnedContentShow");
+        $("footer").toggle();
+    }, 200);
 };
 
 //function that smooth scrolls on click of button to the returned content
