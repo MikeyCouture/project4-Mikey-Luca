@@ -30,7 +30,7 @@ header {
       display: block;
       width: 180%;
       height: 110%;
-      transform: rotate(9deg);
+      transform: rotate(7deg);
       background: $accentcolor;
       z-index: 1;
       @media screen and (max-width: 320px){
@@ -45,7 +45,7 @@ header {
       width: 150%;
       left: -2px;
       height: 80%;
-      transform: rotate(-3deg);
+      transform: rotate(-2deg);
       background: $textcolor;
       z-index: 1;
       @media screen and (max-width: 320px){
@@ -124,6 +124,7 @@ form {
    .about {
       margin: 25px 25px 5px 25px;
       bottom: 10px;
+
       i {
          color: $textcolor;
          font-size: 3rem;

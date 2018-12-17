@@ -244,9 +244,9 @@ header {
     display: block;
     width: 180%;
     height: 110%;
-    -webkit-transform: rotate(9deg);
-    -ms-transform: rotate(9deg);
-    transform: rotate(9deg);
+    -webkit-transform: rotate(7deg);
+    -ms-transform: rotate(7deg);
+    transform: rotate(7deg);
     background: #e69575;
     z-index: 1; }
     @media screen and (max-width: 320px) {
@@ -260,9 +260,9 @@ header {
     width: 150%;
     left: -2px;
     height: 80%;
-    -webkit-transform: rotate(-3deg);
-    -ms-transform: rotate(-3deg);
-    transform: rotate(-3deg);
+    -webkit-transform: rotate(-2deg);
+    -ms-transform: rotate(-2deg);
+    transform: rotate(-2deg);
     background: #134f6b;
     z-index: 1; }
     @media screen and (max-width: 320px) {
@@ -527,6 +527,11 @@ footer {
     margin: 0;
     padding: 5px;
     font-size: 1.5rem; }
+  footer a {
+    text-decoration: none;
+    color: #dae5ee; }
+    footer a:hover {
+      font-weight: bold; }
 
 .returnedContent {
   display: none; }

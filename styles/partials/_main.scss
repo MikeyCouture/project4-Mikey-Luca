@@ -156,6 +156,13 @@ footer {
       padding: 5px;
       font-size: 1.5rem;
    }
+   a {
+      text-decoration: none;
+      color: $backgroundcolor;
+      &:hover {
+         font-weight: bold;
+      }
+   }
 }
 //FOOTER STYLES END
 
