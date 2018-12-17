@@ -79,9 +79,11 @@ runApp.listenForSubmit = function(){
 
 //function that runs on submit and adds a "show" class and fade in to returned content + footer
 runApp.contentDisplay = () => {
-    $(".returnedContent").fadeIn(700);
-    $(".returnedContent").addClass("returnedContentShow");
-    $("footer").toggle("slow");
+    setTimeout(function () { 
+        $(".returnedContent").fadeIn(900);
+        $(".returnedContent").addClass("returnedContentShow");
+        $("footer").toggle();
+    }, 200);
 };
 
 //function that smooth scrolls on click of button to the returned content
@@ -149,7 +151,7 @@ runApp.initAutocomplete = (id) => {
 
 //Function to check if UVIndex is over 4, if so prints to DOM
 runApp.uvIndexChecker = (uv) => {
-    if (uv >= 5) {
+    if (uv >= 4) {
         $(".blurb").append("<em>*UV warning, wear some SPF*</em>");
         $(".weather").append(`<p>UV Index: ${uv}`);
         $(".longWeather").append(`<p>UV Index: ${uv}`);
@@ -199,7 +201,7 @@ runApp.weatherDisplaySwitch = () => {
 };
 
 
-//function that shows and hides about section popup
+//function that shows and hides about section popup // added the ablity to hide modal with "esc" key
 runApp.aboutPopUp = () => {
     $(".openSwitch").on("click", function(e){
         e.preventDefault();
@@ -209,6 +211,11 @@ runApp.aboutPopUp = () => {
         e.preventDefault();
         $(".aboutContent").removeClass("aboutContentOpen");
     })
+    $(document).keyup(function (e) {
+        if (e.keyCode == 27) { // esc keycode
+            $('.aboutContent').removeClass("aboutContentOpen");
+        }
+    });
 }
 
 // RUNNING FUNCTIONS - INIT
